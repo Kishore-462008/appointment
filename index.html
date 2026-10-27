@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slotly | Appointment Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a href="#" class="logo"><span class="logo-icon">S</span> slotly<span class="dot">.</span></a>
+    <p class="nav-label">WORKSPACE</p>
+    <a class="nav-link active" href="#dashboard">▦ &nbsp; Dashboard</a>
+    <a class="nav-link" href="#appointments">▤ &nbsp; Appointments</a>
+    <a class="nav-link" href="#schedule">◷ &nbsp; Schedule</a>
+    <div class="sidebar-bottom">
+      <div class="profile">
+        <div class="avatar">AD</div>
+        <div><strong>Alex Davis</strong><small>Administrator</small></div>
+        <span>⌄</span>
+      </div>
+    </div>
+  </aside>
+
+  <main id="dashboard" class="main">
+    <header class="topbar">
+      <div class="breadcrumb">Workspace <span>/</span> Dashboard</div>
+      <div class="top-actions">
+        <span class="live-dot">System online</span>
+        <button id="themeBtn" class="icon-btn" aria-label="Toggle theme">◐</button>
+      </div>
+    </header>
+
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">MONDAY, YOUR WORKSPACE</p>
+        <h1>Good to see you, Alex <span>✳</span></h1>
+        <p class="muted">Here’s what’s happening with your appointments today.</p>
+      </div>
+      <button class="primary-btn" id="newBtn">＋ New appointment</button>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card">
+        <div class="stat-top"><span>Total appointments</span><span class="stat-icon purple">▦</span></div>
+        <h2 id="total">128</h2><p class="trend">↗ <b>12.8%</b> <span>vs last month</span></p>
+      </article>
+      <article class="stat-card">
+        <div class="stat-top"><span>Upcoming</span><span class="stat-icon blue">◷</span></div>
+        <h2 id="upcoming">24</h2><p class="trend">↗ <b>8.2%</b> <span>vs last month</span></p>
+      </article>
+      <article class="stat-card">
+        <div class="stat-top"><span>Completed</span><span class="stat-icon green">✓</span></div>
+        <h2 id="completed">89</h2><p class="trend">↗ <b>18.4%</b> <span>vs last month</span></p>
+      </article>
+      <article class="stat-card">
+        <div class="stat-top"><span>Cancelled</span><span class="stat-icon orange">×</span></div>
+        <h2 id="cancelled">15</h2><p class="trend neutral">↘ <b>2.1%</b> <span>vs last month</span></p>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel activity">
+        <div class="panel-heading">
+          <div><h3>Appointment activity</h3><p class="muted">Booking overview for this week</p></div>
+          <select id="period"><option value="week">This week</option><option value="month">This month</option></select>
+        </div>
+        <div class="chart" id="chart">
+          <div class="y-labels"><span>40</span><span>30</span><span>20</span><span>10</span><span>0</span></div>
+          <div class="chart-area">
+            <div class="grid-lines"><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="bars" id="bars"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel insight">
+        <span class="insight-icon">✦</span>
+        <p class="eyebrow">QUICK INSIGHT</p>
+        <h3>Your schedule is looking good.</h3>
+        <p class="muted">You have <strong id="insightCount">4 appointments</strong> coming up. Keep your day running smoothly.</p>
+        <div class="insight-footer"><span class="live-dot">On track</span><span>View schedule →</span></div>
+      </article>
+    </section>
+
+    <section class="panel appointments" id="appointments">
+      <div class="panel-heading">
+        <div><h3>Recent appointments</h3><p class="muted">Manage and track your bookings</p></div>
+        <div class="table-actions">
+          <input id="search" type="search" placeholder="⌕ Search appointments...">
+          <select id="statusFilter"><option value="All">All status</option><option>Upcoming</option><option>Completed</option><option>Cancelled</option></select>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>CLIENT</th><th>SERVICE</th><th>DATE & TIME</th><th>STATUS</th><th>ACTION</th></tr></thead>
+          <tbody id="appointmentRows"></tbody>
+        </table>
+      </div>
+      <div class="table-footer"><span id="resultCount">Showing appointments</span><button id="resetBtn" class="text-btn">Reset demo data ↺</button></div>
+    </section>
+    <footer>© 2026 Slotly <span>Made for a smoother day. ✳</span></footer>
+  </main>
+
+  <dialog id="appointmentDialog">
+    <form id="appointmentForm">
+      <div class="dialog-heading"><h2>New appointment</h2><button type="button" id="closeDialog" class="icon-btn">✕</button></div>
+      <label>Client name<input name="client" required placeholder="Enter client name"></label>
+      <label>Service<input name="service" required placeholder="e.g. Consultation"></label>
+      <label>Date and time<input name="date" type="datetime-local" required></label>
+      <label>Status<select name="status"><option>Upcoming</option><option>Completed</option><option>Cancelled</option></select></label>
+      <button class="primary-btn full-btn" type="submit">Create appointment</button>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
